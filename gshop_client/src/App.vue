@@ -1,28 +1,34 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
-  </div>
+    <div id="app">
+        <router-view></router-view>
+<!--        底部-->
+        <FooterGuide v-show="$route.meta.showFooter"></FooterGuide>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+    import FooterGuide from './components/FooterGuide/FooterGuide'
+    import { mapActions } from 'vuex'
+    export default {
+        // created () {
+        //     // 异步获取 address
+        //     this.$store.dispatch('getAddress')
+        // },
+        mounted() {
+            this.getAddress()
+        },
+        methods: {
+            ...mapActions(['getAddress'])
+        },
+        components: {
+            FooterGuide
+        }
+    }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="stylus" rel="stylesheet/stylus" type="text/stylus">
+    .app
+        width 100%
+        height 100%
+        background #f5f5f5
 </style>
