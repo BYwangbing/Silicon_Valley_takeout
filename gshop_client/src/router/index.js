@@ -17,10 +17,30 @@ import Login from '../pages/Login/Login'
 export default new VueRouter({
     routes: [
         { path: '/', redirect: '/home' },
-        { path: '/home', component: Home, meta: { showFooter: true } },
-        {  path: '/search', component: Search,meta: { showFooter: true } },
-        {  path: '/order', component: Order, meta: { showFooter: true } },
-        {  path: '/profile', component: Profile, meta: { showFooter: true } },
+        {
+            path: '/home',
+            // component: Home,
+            component:resolve => require(['../pages/Home/Home'],resolve),
+            meta: { showFooter: true }
+        },
+        {
+            path: '/search',
+            // component: Search,
+            component:resolve => require(['../pages/Search/Search'],resolve),
+            meta: { showFooter: true }
+        },
+        {
+            path: '/order',
+            // component: Order,
+            component:resolve => require(['../pages/Order/Order'],resolve),
+            meta: { showFooter: true }
+        },
+        {
+            path: '/profile',
+            // component: Profile,
+            component:resolve => require(['../pages/Profile/Profile'],resolve),
+            meta: { showFooter: true }
+        },
         {  path: '/login', component: Login }
     ]
 })
